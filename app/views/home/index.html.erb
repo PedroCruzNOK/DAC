@@ -1,0 +1,124 @@
+<div class="container">
+  <h1 class="text-center">Cotizador de Gastos de Operacion GUSTAVO</h1>
+  <hr>
+  <%= form_tag do %>
+    <div class="row">
+      <div class="col-sm">
+        <%= label_tag :vehicle, 'Vehículo' %>
+        <%= select_tag :vehicle, options_for_select( Vehicle.all.collect { |v| ["#{v.license_plate || NANANA} - #{v.year} - #{v.brand} - #{v.vehicle_type}", v.id]} ), {include_blank: "Selecciona un vehículo...", id: 'vehicle_select', class: 'form-control' } %>
+        <div id="vehicleInfo" class="calc-info">
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <%= label_tag :route, 'Ruta' %>
+        <%= select_tag :route, options_for_select( Route.all.collect { |r| ["#{r.origin} - #{r.destination}", r.id]} ), {include_blank: "Selecciona una ruta...", id: 'route_select', class: 'form-control' }%>
+        <div id="routeInfo" class="calc-info">
+        </div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="col-sm-3">
+        <%= label_tag :days, 'Dias' %>
+        <%= number_field_tag :days, {}, class: 'form-control' %>
+        <div id="vehicleInfo" class="calc-info">
+        </div>
+      </div>
+
+      <div class="col-sm-3 text-center">
+        <span>Comida por dias</span>
+        <br><br>
+        <strong>$150.00</strong>
+      </div>
+
+
+      <div class="col-sm-3">
+        <%= label_tag :assistants, 'Ayudantes' %>
+        <%= number_field_tag :assistants, {}, class: 'form-control' %>
+        <div id="vehicleInfo" class="calc-inf">
+        </div>
+      </div>
+
+      <div class="col-sm-3 text-center">
+        <span>Pago por ayudante general</span>
+        <br><br>
+        <strong>$130.00</strong>
+      </div>
+
+
+      <div class="col-sm-3">
+        <%= label_tag :fuel_by_liter, 'Costo Combustible/Lt' %>
+        <%= number_field_tag :fuel_by_liter, {}, class: 'form-control' %>
+        <div id="vehicleInfo" class="calc-info">
+        </div>
+      </div>
+
+      <div class="col-sm-3 text-center">
+        <span>Litros de ruta</span>
+        <br><br>
+        <strong id="routeLiters"></strong>
+      </div>
+
+      <div class="col-sm-6">
+        <%= label_tag :cost_of_accessories, 'Agregar costo de accesorios' %>
+        <%= number_field_tag :cost_of_accessories, {}, class: 'form-control' %>
+        <div id="vehicleInfo" class="calc-info">
+        </div>
+      </div>
+
+      <div class="col-sm-6 text-right">
+        <%= submit_tag 'Calcular', id: 'calcButton', class: 'btn btn-primary btn-lg botones' %>
+      </div>
+    </div>
+
+
+  <% end %>
+  <br>
+
+  <div id="resultsContainer" class="row">
+      <div class="col-sm-2 text-center">
+        <h4 id="resumeDistance"></h4>
+        <span>Pago distancia</span>
+      </div>
+
+      <div class="col-sm-2 text-center">
+       <h4 id="resumeTollbooths"></h4>
+        <span>Casetas</span>
+      </div>
+
+      <div class="col-sm-2 text-center">
+       <h4 id="resumeFood"></h4>
+        <span>Comida</span>
+      </div>
+
+      <div class="col-sm-2 text-center">
+       <h4 id="resumeAssistants"></h4>
+        <span>Ayudantes</span>
+      </div>
+
+      <div class="col-sm-2 text-center">
+       <h4 id="resumeFuel"></h4>
+        <span>Combustible</span>
+      </div>
+
+      <div class="col-sm-2 text-center">
+       <h4 id="resumeFinalFuel"></h4>
+        <span>Combustible mas comision TicketCard 4.96%</span>
+      </div>
+
+       <div class="col-sm-12 text-center">
+       <h3><strong id="resumeOperation"></strong></h3>
+        <span>Costo Operación</span>
+      </div>
+    </div>
+
+<br><br><br>
+<br><br><br>
+
+<div class="row footer">
+  <div class="col-md-12">
+    <h6 class="text-center">Create By Sistemas Rinoceronte</h6>
+  </div>
+</div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">Editar pagos por categoria de unidad</h1>
+
+      <%= render 'form', vehicle_category_and_payment: @vehicle_category_and_payment %>
+
+      <%= link_to 'Ver', @vehicle_category_and_payment, class:"botones btn"%>
+      <%= link_to 'Atras', vehicle_category_and_payments_path, class:"botones btn" %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_with(model: vehicle, local: true) do |form| %>
+        <% if vehicle.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
+
+            <ul>
+            <% vehicle.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field col-md-4">
+          <%= form.label :ECO %>
+          <%= form.text_field :economic, class:"form-control" %>
+        </div>
+        <div class="field col-md-4 ">
+          <%= form.label :MARCA %>
+          <%= form.text_field :brand, class:"form-control" %>
+        </div>
+
+        <div class="field col-md-4">
+          <%= form.label :TIPO %>
+          <%= form.text_field :vehicle_type, class:"form-control" %>
+        </div>
+
+        <div class="field col-md-4">
+          <%= form.label :AÑO %>
+          <%= form.number_field :year, class:"form-control" %>
+        </div>
+        <div class="field col-md-4">
+          <%= form.label :Rendimiento%>
+          <%= form.number_field :performance_km_fuel, class:"form-control" %>
+        </div>
+        <br>
+        <div class="field col-md-4">
+          <%= form.label :EJES %>
+          <%= form.select :edges, %w[2 3 4 5 6], class:"form-control" %>
+        </div>
+        <div class="field col-md-4">
+          <%= form.label :PAGO_POR_CATEGORIA_DE_VEHICULO %>
+          <%= form.select :vehicle_category_and_payment_id, VehicleCategoryAndPayment.all.collect{ |v| [v.category, v.id] }, class:"form-control"%>
+        </div>
+
+        <div class="field col-md-3">
+          <%= form.label :license_plate, 'Placas' %>
+          <%= form.text_field :license_plate, class:"form-control" %>
+        </div>
+        <br>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

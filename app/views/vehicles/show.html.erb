@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6 alert alert-dark">
+      <p id="notice" ><%= notice %></p>
+      <p class="alert alert-info">
+        <strong>ECO:</strong>
+        <%= @vehicle.economic %>
+      </p>
+      <p class="alert alert-info">
+        <strong>Brand:</strong>
+        <%= @vehicle.brand %>
+      </p>
+
+      <p class="alert alert-info">
+        <strong>Type:</strong>
+        <%= @vehicle.vehicle_type %>
+      </p>
+
+      <p class="alert alert-info">
+        <strong>Year:</strong>
+        <%= @vehicle.year %>
+      </p>
+      <p class="alert alert-info">
+        <strong>Rendimiento KM/COMB:</strong>
+        <%= @vehicle.performance_km_fuel %>
+      </p>
+      <p class="alert alert-info">
+        <strong>Ejes:</strong>
+        <%= @vehicle.edges %>
+      </p>
+
+      <p class="alert alert-info">
+        <strong>Placas:</strong>
+        <%= @vehicle.license_plate %>
+      </p>
+
+      <p class="alert alert-info">
+        <strong>Vehicle category and payment:</strong>
+        <%= @vehicle.vehicle_category_and_payment.category if @vehicle.vehicle_category_and_payment.present? %>
+      </p>
+    </div>
+  </div>
+  <%= link_to 'Editar', edit_vehicle_path(@vehicle), class:"btn btn-primary botones"%>
+  <%= link_to 'Atras', vehicles_path, class:"btn btn-primary botones" %>
+</div>
+<br>

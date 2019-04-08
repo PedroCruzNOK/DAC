@@ -1,0 +1,36 @@
+<%= form_with(model: vehicle_category_and_payment, local: true) do |form| %>
+  <% if vehicle_category_and_payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vehicle_category_and_payment.errors.count, "error") %> prohibited this vehicle_category_and_payment from being saved:</h2>
+
+      <ul>
+      <% vehicle_category_and_payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="form-group">
+  <div class="field col-md-4 col-sm-10">
+    <%= form.label :Categoria %>
+    <%= form.text_field :category, class:"form-control"%>
+  </div>
+
+  <div class="field col-md-4 col-sm-10">
+    <%= form.label :Pago_por_KM %>
+    <%= form.text_field :payment_per_km, class:"form-control" %>
+  </div>
+
+  <div class="field col-md-4 col-sm-10">
+    <%= form.label :pago_po_KM_de_regreso %>
+    <%= form.text_field :payment_per_return_km, class:"form-control" %>
+  </div>
+<br>
+<br>
+  <div class="actions">
+
+    <%= form.submit %>
+  </div>
+</div>
+
+<% end %>

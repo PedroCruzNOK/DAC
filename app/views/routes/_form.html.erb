@@ -1,0 +1,47 @@
+<%= form_with(model: route, local: true) do |form| %>
+  <% if route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(route.errors.count, "error") %> prohibited this route from being saved:</h2>
+
+      <ul>
+      <% route.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field col-md-4">
+    <%= form.label :Origen %>
+    <%= form.text_field :origin, class:"form-control" %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= form.label :Destino %>
+    <%= form.text_field :destination, class:"form-control" %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= form.label :Distancia %>
+    <%= form.text_field :distance, class:"form-control" %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= form.label :Caseta_2_a_4_ejes %>
+    <%= form.number_field :tollbooths_2_to_4_edges, class:"form-control" %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= form.label :Caseta_5_a_6_ejes %>
+    <%= form.number_field :tollbooths_5_to_6_edges, class:"form-control" %>
+  </div>
+
+  <div class="field col-md-4">
+    <%= form.label :Dias %>
+    <%= form.number_field :days, class:"form-control" %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

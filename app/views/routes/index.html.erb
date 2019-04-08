@@ -1,0 +1,38 @@
+<div class="container">
+  <h1 class="text-center">Rutas por viaje Rinoceronte</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Origen</th>
+        <th>Destino</th>
+        <th>Distancia</th>
+        <th>Casetas 2-4 Ejes</th>
+        <th>Casetas 5-6 Ejes</th>
+        <th>Dias</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @routes.each do |route| %>
+        <tr>
+          <td><%= route.origin %></td>
+          <td><%= route.destination %></td>
+          <td><%= route.distance %></td>
+          <td><%= route.tollbooths_2_to_4_edges %></td>
+          <td><%= route.tollbooths_5_to_6_edges %></td>
+          <td><%= route.days %></td>
+          <td><%= link_to 'Ver', route %></td>
+          <td><%= link_to 'Editar', edit_route_path(route) %></td>
+          <td><%= link_to 'Eliminar', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Agregar Ruta', new_route_path, class:"btn btn-primary botones" %>
+</div>
+<br>
